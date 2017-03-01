@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Testing</title>
+    <!-- Bootstrap -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	
+  </head>
+  <body>
+  
+	<label for="textfield_text">Text Field:</label>
+  <input type="text" name="textfield_N" id="textfield">
+<label id="lblt1">Hier Field Text</label>
+
+<div id ="div_buttons">
+  <button type="button" class="btn btn-primary" id="booBt1" onClick="intoLBL()">Field into Label</button>
+        <button type="button" class="btn btn-info" onClick="setstoreL1()">Set Storage</button>
+        <button type="button" class="btn btn-warning" onClick="getstoreL1()">Get Storage</button>
+	  </div >
+     
+      <div id="div_St_lbl" >
+       <label id="lblgetL1">Hier Storage Text</label>
+	  </div> 
+      
+       <div id="r"> </div>
+         <div >Buttons to test </div>
+        <div>
+      	      <button type="button" class="btn btn-warning" onClick="vib1()">Vibrieren</button>
+      	      <button type="button" class="btn btn-warning" onClick="vib2()">Vib 2</button>
+   	      <button type="button" class="btn btn-danger" onClick="al1()">Alert</button>
+   	      <button type="button" class="btn btn-danger" onClick ="pr1()">Prompt</button>
+      </div>
+  
+  <script>
+
+	function setstoreL1(){	  
+		var lVar1 = document.getElementById("textfield").value;
+		   localStorage.setItem("Set11", lVar1);
+		
+		 document.getElementById("lblgetL1").innerText = 'SET';
+	}
+	  
+	  function getstoreL1() {
+		    document.getElementById("lblgetL1").innerText = localStorage.getItem("Set11");
+	  }
+	 
+	  function intoLBL() {
+			  var TextVar1 = document.getElementById("textfield").value;
+			  document.getElementById("lblt1").innerText =TextVar1;	  
+		  }
+	  
+	  function vib1() {
+		navigator.vibrate([1000, 2000, 2000]);
+	  }
+	  
+	  function vib2() {
+		  navigator.vibrate(2000);
+	  }
+	  
+	  function alertDismissed() {
+		  // do something
+}
+
+	  function al1(){
+		  navigator.notification.alert(
+			  'You are the winner!',  // message
+			  alertDismissed,         // callback
+    	'Game Over',            // title
+    	'Done'                  // buttonName
+			  );
+	  }
+			  function onPrompt(results) {
+    			alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+}
+
+		  function pr1() {
+			  navigator.notification.prompt(
+    'Please enter your name',  // message
+    onPrompt,                  // callback to invoke
+    'Registration',            // title
+    ['Ok','Exit'],             // buttonLabels
+    'Jane Doe'                 // defaultText
+);
+		  }
+	  
+	    function funTest() {
+			  document.getElementById("lblt1").innerText ='HH';	  
+		  		}
+ 			
+	  </script>
+
+    <!-- Cordova Script -->
+    <script type="text/javascript" src="cordova.js"></script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+	<script src="js/jquery-1.11.3.min.js"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed --> 
+	<script src="js/bootstrap.js"></script>
+  </body>
+</html>
